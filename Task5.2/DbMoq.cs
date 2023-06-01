@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task1._1
+namespace Task5._2
 {
-    internal class Program
+    internal class DbMoq
     {
-        static void Main(string[] args)
+        public static List<Product> Products { get; set; }
+        
+
+        static DbMoq()
         {
-            List<Product> products = new List<Product>()
+            Products = new List<Product>()
             {
                 new Product()
                 {
@@ -83,30 +86,6 @@ namespace Task1._1
                     Quantity = 12
                 }
             };
-
-            for (int i = 0; i < products.Count; i++)
-            {
-
-                if (i == 1 || i == 0 || i == 5 || i == 7)
-                {
-                    Console.WriteLine($"Name: {products[i].Name}\n" +
-                                      $"Cost: {products[i].Cost}\n" +
-                                      $"Description: {products[i].Description}\n" +
-                                      $"Quantity: {products[i].Quantity}\n");
-                }
-
-                if (i == 1 ||  i == 5 )
-                {
-                    Console.WriteLine($"--Id: {products[i].Id}\n");
-                }
-
-                if (i == 0 || i == 7)
-                {
-                    Console.WriteLine($"++Name: {products[i].Name}\n");
-                }
-            }
-
-            Console.ReadLine();
         }
     }
 }
