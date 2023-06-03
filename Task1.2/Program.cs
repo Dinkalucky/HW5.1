@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using Task1._2;
+using Task1._2.Enum;
 using Task5._2;
 
 Console.WriteLine("Hello, World!");
@@ -81,16 +83,32 @@ using (MyDatabaseContext database = new MyDatabaseContext())
 
 using (MyDatabaseContext database = new MyDatabaseContext())
 {
-    var products = database.Products.ToList();
-    for (int i = 0; i < products.Count; i++)
+    try
     {
-        
-        if (i == 1 || i == 0 || i == 5 || i == 7)
+        var products = database.Products.ToList();
+        for (int i = 0; i < products.Count; i++)
         {
-            Console.WriteLine($"Name: {products[i].Name}\n" +
-                              $"Cost: {products[i].Cost}\n" +
-                              $"Description: {products[i].Description}\n" +
-                              $"Quantity: {products[i].Quantity}\n");
+
+            if (i == 1 || i == 0 || i == 5 || i == 7)
+            {
+                Console.WriteLine($"Name: {products[i].Name}\n" +
+                                  $"Cost: {products[i].Cost}\n" +
+                                  $"Description: {products[i].Description}\n" +
+                                  $"Quantity: {products[i].Quantity}\n");
+            }
         }
     }
+    catch (Exception ex)
+    {
+        using (MyDatabaseContext db = new MyDatabaseContext())
+        {
+            database.Errors.Add(new Error()
+            {
+                Message = ex.Message,
+                Time = DateTime.Now,
+                Status = StatusCode.NotFound
+            });
+        }
+    }
+
 }
