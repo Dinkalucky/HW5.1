@@ -5,20 +5,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task1._2;
 
 namespace Task5._2
 {
     public class Product
     {
-        [Column("ProductId")]
         public Guid Id { get; set; }
-        [MaxLength(50)]
         public string Name { get; set; }
-        public double Cost { get; set; }
-        [MaxLength(200)]
+        public double Price { get; set; }
+        public double ActionPrice { get; set; }
         public string Description { get; set; }
-        public int Quantity { get; set; }
-        public Guid ProductAlterId { get; set; }
+        public string DescriptionField1 { get; set; }
+        public string DescriptionField2 { get; set; }
+        public string ImageUrl { get; set; }
+        public Category Category { get; set; }
+        public List<Cart> Cart { get; set; }
+        public List<KeyParams> KeyWords { get; set; }
+
 
     }
 }

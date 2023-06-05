@@ -12,10 +12,14 @@ namespace Task5._2
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Error> Errors { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Word> Words { get; set; }
+        public DbSet<KeyParams> KeyParams { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().HasAlternateKey(p => new { p.Id, p.ProductAlterId });
             modelBuilder.Ignore<Error>();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
